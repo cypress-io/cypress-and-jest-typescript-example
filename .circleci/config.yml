@@ -1,0 +1,10 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1.7.0
+workflows:
+  build:
+    jobs:
+      - cypress/run:
+          # there are no jobs to follow this one
+          # so no need to save the workspace files (saves time)
+          no-workspace: true
