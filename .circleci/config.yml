@@ -8,6 +8,8 @@ workflows:
           # there are no jobs to follow this one
           # so no need to save the workspace files (saves time)
           no-workspace: true
+          build: npm run lint
           post-steps:
-            # run Jest tests
-            - run: npm test
+            - run:
+                name: Jest tests
+                command: npm test
