@@ -2,6 +2,11 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "strict": true
-  }
+    "lib": ["ES2015", "DOM"],
+    "strict": true,
+    "types": ["jest"],
+    "noEmit": true
+  },
+  "include": ["src/*.ts"],
+  "exclude": ["src/*.test.ts"]
 }

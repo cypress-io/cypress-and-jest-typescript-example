@@ -5,13 +5,15 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "build": "tsc",
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.7",
-    "cypress": "^4.0.0",
-    "typescript": "^3.5.2"
+    "cypress": "^4.11.0",
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "2.1.2",
