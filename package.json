@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "cy:open": "cypress open",
-    "build": "tsc",
+    "typecheck-app": "tsc",
+    "typecheck-cy": "tsc -p cypress/tsconfig.json",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
