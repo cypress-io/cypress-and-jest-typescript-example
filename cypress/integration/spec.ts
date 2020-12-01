@@ -10,3 +10,6 @@ describe('TypeScript spec', () => {
     expect(sum(1, 2, 3, 4)).to.equal(10)
   })
 })
+
+// uncomment to get a lint error
+const aCypressString: string = 42;

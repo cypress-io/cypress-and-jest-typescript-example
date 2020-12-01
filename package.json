@@ -7,7 +7,8 @@
     "test": "jest",
     "cy:open": "cypress open",
     "build": "tsc",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --project tsconfig.lint.json",
+    "lint:cypress": "tsc --project cypress/tsconfig.json"
   },
   "dependencies": {
     "@types/chai": "^4.1.7",

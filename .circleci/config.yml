@@ -8,7 +8,8 @@ workflows:
           # there are no jobs to follow this one
           # so no need to save the workspace files (saves time)
           no-workspace: true
-          build: npm run lint
+          build: npm run lint && npm run lint:cypress
+          # runs Cypress tests by default
           post-steps:
             - run:
                 name: Jest tests
