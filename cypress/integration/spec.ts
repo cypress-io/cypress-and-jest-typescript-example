@@ -12,4 +12,4 @@ describe('TypeScript spec', () => {
 })
 
 // uncomment to get a lint error
-const aCypressString: string = 42;
+// const aCypressString: string = 42;

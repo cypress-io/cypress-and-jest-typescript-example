@@ -9,4 +9,4 @@ test('basic again', () => {
 });
 
 // uncomment to get a lint error
-const aTestString: string = 42;
+// const aTestString: string = 42;

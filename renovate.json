@@ -6,7 +6,7 @@
   "major": {
     "automerge": false
   },
-  "prHourlyLimit": 2,
+  "prHourlyLimit": 5,
   "updateNotScheduled": false,
   "timezone": "America/New_York",
   "schedule": [
