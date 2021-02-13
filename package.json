@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.7",
+    "@types/mocha": "^8.0.0",
     "cypress": "6.4.0",
     "typescript": "^3.9.7"
   },
