@@ -65,13 +65,13 @@ jobs:
           path: ~/.npm
           # use key string with "v1" for simple cache invalidation
           key: dependencies-v1-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies 📦
+        run: npm ci
         env:
           # we do not need to install Cypress itself
           # as we do not plan to run tests
           CYPRESS_INSTALL_BINARY: 0
-
-      - name: Install dependencies 📦
-        run: npm ci
 
       - name: Run Jest tests 🧪
         run: npm test
