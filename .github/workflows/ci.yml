@@ -1,0 +1,77 @@
+name: ci
+on: [push]
+jobs:
+  e2e:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Install and run Cypress tests 🌲
+        uses: cypress-io/github-action@v2
+
+  unit:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      # we are only interested in installing and caching dependencies,
+      # without installing the Cypress binary
+      - name: Install NPM dependencies 📦
+        uses: bahmutov/npm-install@v1
+        env:
+          # we do not need to install Cypress itself
+          # as we do not plan to run tests
+          CYPRESS_INSTALL_BINARY: 0
+
+      - name: Run Jest tests 🧪
+        run: npm test
+
+  unit-using-cypress-gh-action:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      # we are only interested in installing and caching dependencies,
+      # without installing the Cypress binary
+      - name: Install NPM dependencies 📦
+        uses: cypress-io/github-action@v2
+        # we do not want to accidentally overwrite
+        # the full cache created in the e2e test job
+        # because this job does not cache Cypress binary
+        # thus we use custom cache key
+        with:
+          cache-key: unit-cache-v1-${{ runner.os }}-hash-${{ hashFiles('package-lock.json') }}
+        env:
+          # we do not need to install Cypress itself
+          # as we do not plan to run tests
+          CYPRESS_INSTALL_BINARY: 0
+
+      - name: Run Jest tests 🧪
+        run: npm test
+
+  unit-without-any-helpers:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      # use actions/cache to restore / save cache
+      - name: Cache dependencies 💎
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          # use key string with "v1" for simple cache invalidation
+          key: dependencies-v1-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies 📦
+        run: npm ci
+        env:
+          # we do not need to install Cypress itself
+          # as we do not plan to run tests
+          CYPRESS_INSTALL_BINARY: 0
+
+      - name: Run Jest tests 🧪
+        run: npm test

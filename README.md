@@ -33,6 +33,20 @@ See the excellent advice on setting TypeScript for Jest and Cypress in [TypeScri
 
 If you hit a problem using Jest and Cypress in the same project, please open an issue in this repository. Include a fork of this repository that shows the problem.
 
+## CircleCI workflow
+
+The file [.circleci/config.yml](./.circleci/config.yml) shows how to run Cypress and Jest tests using [Cypress CircleCI Orb](https://github.com/cypress-io/circleci-orb)
+
+## GitHub Actions workflow
+
+This repo shows how to install dependencies and how to run Jest test in separate jobs on GitHub Actions. See the workflow file [.github/workflows/ci.yml](./.github/workflows/ci.yml) for several different approaches
+
+- install and cache dependencies yourself using [actions/cache](http://github.com/actions/cache)
+- install and cache NPM dependencies using [bahmutov/npm-install](https://github.com/bahmutov/npm-install) helper
+- install and cache NPM dependencies using [cypress-io/github-action](https://github.com/cypress-io/github-action)
+
+**Tip:** you can learn more about running Cypress tests on continuous integration services from [Cypress CI guide](https://on.cypress.io/ci) and [Cypress on CI workshop](https://github.com/cypress-io/cypress-workshop-ci).
+
 ## License
 
 This project is licensed under the terms of the [MIT license](/LICENSE.md).
