@@ -43,7 +43,7 @@ jobs:
         # because this job does not cache Cypress binary
         # thus we use custom cache key
         with:
-          cache-key: unit-cache-${{ runner.os }}-hash-${{ hashFiles('package-lock.json') }}
+          cache-key: unit-cache-v1-${{ runner.os }}-hash-${{ hashFiles('package-lock.json') }}
         env:
           # we do not need to install Cypress itself
           # as we do not plan to run tests
