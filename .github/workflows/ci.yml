@@ -1,0 +1,29 @@
+name: ci
+on: [push]
+jobs:
+  e2e:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Install and run Cypress tests 🌲
+        uses: cypress-io/github-action@v2
+
+  unit:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      # we are only interested in installing and caching dependencies,
+      # without installing the Cypress binary
+      - name: Install NPM dependencies 📦
+        uses: bahmutov/npm-install@v1
+        env:
+          # we do not need to install Cypress itself
+          # as we do not plan to run tests
+          CYPRESS_INSTALL_BINARY: 0
+
+      - name: Run Jest tests 🧪
+        run: npm test
