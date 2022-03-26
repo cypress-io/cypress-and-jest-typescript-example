@@ -60,7 +60,7 @@ jobs:
 
       # use actions/cache to restore / save cache
       - name: Cache dependencies 💎
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           # use key string with "v1" for simple cache invalidation
